@@ -1,2 +1,2 @@
-# da-recepies
-Django project for a cooking recepies web app
+# da-recipies
+Django project for a cooking recipies web app
