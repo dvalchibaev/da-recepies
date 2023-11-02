@@ -1,26 +1,34 @@
 {% extends 'Base.html' %}
 {% block Title %} Recipies {% endblock %}
 {% block Content %}
-    <div class="container px-4 py-5" id="five recipies">
+<div class="container px-4 py-5" id="five recipies">
     <h2 class="pb-2 border-bottom">Try these recipies!</h2>
-      <div class="row row-cols-1 row-cols-lg-5 align-items-stretch g-4 py-5">
-        {% for recipe in recipies %}
-          <div class="col">
-            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url({{recipe.picture.url}});">
-              <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
-                <h3 class="pt-1 mt-1 mb-4 display-8 lh-1 fw-bold"> {{recipe.name}} </h3>
-<!--                <ul class="d-flex list-unstyled mt-auto">-->
-<!--                  -->
-<!--                    <li class="d-flex align-items-center me-3">-->
-<!--                      <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>-->
-<!--                      <small></small>-->
-<!--                    </li>-->
-<!--                  -->
-<!--                </ul>-->
-              </div>
-            </div>
-          </div>
-        {% endfor %}
+    <div class="row row-cols-1 row-cols-lg-5 align-items-stretch g-4 py-5">
+    {% for recipe in recipies %}
+      <div class="col">
+        <div class="card card-cover h-100 overflow-hidden rounded-4" style="background-image: url({{ recipe.picture.url }}); background-size: cover; position: relative;">
+            <a href="{% url 'recipe' recipe.pk %}">
+            <!-- Add a shadow overlay using a pseudo-element -->
+                <div class="shadow-overlay" style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));"></div>
+
+                <div class="d-flex flex-column h-100 p-5 pb-3 text-white " style="position: relative; z-index: 1;">
+
+                        <h3 class="pt-1 mt-1 mb-4 display-8 lh-1 fw-bold">
+                            <a href="{% url 'recipe' recipe.pk %}" class="text-white">{{ recipe.name }}</a>
+                        </h3>
+                    <ul class="d-flex list-unstyled mt-auto">
+                        <li class="d-flex col align-items-center me-3">
+                            <small>{{ recipe.author }}</small>
+                        </li>
+                        <li class="d-flex col align-items-center me-3">
+                            <small>{{ recipe.time_to_cook }} min</small>
+                        </li>
+                    </ul>
+                </div>
+            </a>
+        </div>
       </div>
-  </div>
+    {% endfor %}
+    </div>
+</div>
 {% endblock %}

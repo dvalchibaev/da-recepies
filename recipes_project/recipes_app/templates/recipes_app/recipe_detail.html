@@ -1,0 +1,18 @@
+{% extends 'Base.html' %}
+
+{% block Title %} {{recipe.name}} {% endblock %}
+
+{% block Content %}
+<div class="mx-auto row row-cols-1 row-cols-lg-2 align-items-center pt-5" style="max-width:1200pt">
+    <div class="col">
+        <img src="{{recipe.picture.url}}" alt="{{recipe.name}}" height=400>
+    </div>
+    <div class="d-flex col">
+        <ul>
+            <li><h3>{{recipe.name}}</h3></li>
+            <li><p>{{recipe.description}}</p></li>
+            <li><p>Cooking time: {{recipe.time_to_cook}}</p></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
