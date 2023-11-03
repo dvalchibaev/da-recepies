@@ -11,6 +11,19 @@
                 <form method="post">
                     {% csrf_token %}
 
+                    {% if form.errors %}
+                    <div class="alert alert-danger">
+                        <p><strong>Error:</strong> Please correct the following errors:</p>
+                        <ul>
+                            {% for field, errors in form.errors.items %}
+                                {% for error in errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+
                     <div class="mb-3">
                         <label for="username" class="form-label">Username:</label>
                         <input type="text" id="username" name="username" class="form-control" required>
@@ -22,13 +35,13 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password:</label>
-                        <input type="password" id="password" name="password" class="form-control" required>
+                        <label for="password1" class="form-label">Password:</label>
+                        <input type="password" id="password1" name="password1" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
-                        <label for="confirm_password" class="form-label">Confirm Password:</label>
-                        <input type="password" id="confirm_password" name="confirm_password" class="form-control" required>
+                        <label for="password2" class="form-label">Confirm Password:</label>
+                        <input type="password" id="password2" name="password2" class="form-control" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Register</button>
