@@ -75,6 +75,7 @@ def get_recipe(request, recipe_id):
 
 @login_required
 def add_recipe(request):
+    categories = Category.objects.all()
     if request.method == 'POST':
         form = RecipeForm(request.POST, request.FILES)
 
@@ -87,7 +88,7 @@ def add_recipe(request):
     else:
         form = RecipeForm()
 
-    return render(request, 'recipes_app/add_recipe.html', {'form': form})
+    return render(request, 'recipes_app/add_recipe.html', {'form': form, 'categories': categories})
 
 
 def find_best_matching_recipe(request, recipe_name):
