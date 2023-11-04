@@ -1,0 +1,14 @@
+{% extends 'Base.html' %}
+
+{% block Title %} Categories {% endblock %}
+
+{% block Content %}
+    <div class="container">
+        <h1 class="mt-4">All Categories</h1>
+        <ul class="list-group">
+            {% for category in categories %}
+                <li class="list-group-item">{{ category.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
