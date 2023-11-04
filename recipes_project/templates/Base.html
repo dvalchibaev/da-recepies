@@ -143,9 +143,21 @@
                   {% endif %}
               </ul>
             </li>
+            {% if request.user.is_authenticated %}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Categories
+              </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'add_category' %}">Add category</a></li>
+                    <li><a class="dropdown-item" href="{% url 'all_categories' %}">Categories</a></li>
+                </ul>
+            </li>
+            {% endif %}
+
           </ul>
-            <form class="d-flex" role="search" method="get" action="{% url 'search_recipes' %}">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
+            <form class="d-flex" role="search" method="get" action="{% url 'search' %}">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="recipe_name" name="recipe_name">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>

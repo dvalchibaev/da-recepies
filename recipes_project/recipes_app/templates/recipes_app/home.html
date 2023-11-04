@@ -1,8 +1,8 @@
 {% extends 'Base.html' %}
 {% block Title %} Home page {% endblock %}
 {% block Content %}
-<div class="container px-1 py-5" id="five recipies">
-    <h2 class="pb-2 border-bottom">Try these recipies!</h2>
+<div class="container px-1 py-5" id="five recipes">
+    <h2 class="pb-2 border-bottom">Try these recipes!</h2>
     <div class="row row-cols-1 row-cols-lg-5 align-items-stretch g-4 my-5">
     {% for recipe in recipies %}
       <div class="col" style="height: 250px; max-width: 300px;">

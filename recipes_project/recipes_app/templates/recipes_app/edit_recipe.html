@@ -52,18 +52,6 @@
                         <input type="file" id="picture" name="picture">
                     </div>
 
-                    <div class="mb-2">
-                        <label for="categories" class="form-label">Categories:</label>
-                        <select id="categories" name="categories" class="form-select" multiple>
-                            {% for cat in categories %}
-                                <option value="{{ cat }}"
-                                        {% if cat in recipe.categories.all %}
-                                            selected
-                                        {% endif %}> {{ cat }}
-                                </option>
-                            {% endfor %}
-                        </select>
-                    </div>
 
                 </form>
             </div>
